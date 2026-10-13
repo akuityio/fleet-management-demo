@@ -1,0 +1,62 @@
+---
+apiVersion: ee.kargo.akuity.io/v1alpha1
+kind: CustomPromotionStep
+metadata:
+  name: hello-world
+spec:
+  # Container configuration (required)
+  image: ubuntu
+  ## Using "sh" to demonstrate variable substitution
+  command: ["sh", "-c", "sleep ${{ config.sleep }}; echo hello=${HELLO}-${{ config.world }} > $KARGO_OUTPUT"]   # Required: executable path
+  env:
+    - name: HELLO
+      value: bonjour
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionTask
+metadata:
+  name: promote
+  namespace: fleet-management-demo
+spec:
+  vars:
+  - name: fail
+    value: "false"
+
+  steps:
+    - as: custom
+      uses: hello-world
+      config:
+        world: ${{ target.params.branch }}
+        sleep: ${{ target.params.replicas }}
+    - as: fail
+      uses: fail
+      if: ${{ vars.fail == "true" && target.params.fail }}
+    - as: compose-output
+      uses: compose-output
+      config:
+        value: ${{ target.params.branch }}
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: wait30
+  namespace: fleet-management-demo
+spec:
+  metrics:
+  - name: test
+    provider:
+      job:
+        metadata:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: test
+                image: alpine:latest
+                command:
+                - sleep
+                - "30"
+              restartPolicy: Never

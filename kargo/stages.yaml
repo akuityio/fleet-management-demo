@@ -1,0 +1,173 @@
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: dev
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: green
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      direct: true
+  targets:
+    selectors:
+    - matchLabels:
+        env: dev
+    updateStrategy:
+      maxConcurrent: 20
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: staging
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: yellow
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      stages:
+        - dev
+  targets:
+    updateStrategy:
+      maxConcurrent: 20
+    selectors:
+    - matchLabels:
+        env: staging
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod-eu
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: orange
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      stages:
+        - staging
+  targets:
+    updateStrategy:
+      maxConcurrent: 20
+    selectors:
+    - matchLabels:
+        env: prod
+        geo: eu
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod-apac
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: red
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      stages:
+        - prod-eu
+  targets:
+    updateStrategy:
+      maxConcurrent: 20
+    selectors:
+    - matchLabels:
+        env: prod
+        geo: apac
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod-ltam
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: orange
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      stages:
+        - staging
+  targets:
+    updateStrategy:
+      maxConcurrent: 20
+    selectors:
+    - matchLabels:
+        env: prod
+        geo: ltam
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod-us
+  namespace: fleet-management-demo
+  annotations:
+    kargo.akuity.io/color: red
+spec:
+  requestedFreight:
+  - origin:
+      kind: Warehouse
+      name: otel-app
+    sources:
+      stages:
+        - prod-ltam
+  targets:
+    updateStrategy:
+      maxConcurrent: 20
+    selectors:
+    - matchLabels:
+        env: prod
+        geo: us
+  promotionTemplate:
+    spec:
+      steps:
+      - task:
+          name: promote
+        vars:
+        - name: fail
+          value: "true"

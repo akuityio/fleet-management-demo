@@ -1,0 +1,584 @@
+apiVersion: ee.kargo.akuity.io/v1alpha1
+kind: TargetSet
+metadata:
+  name: clusters
+  namespace: fleet-management-demo
+spec:
+  generator:
+    list:
+      elements:
+      - {"region": "us-west-4", "geo": "us", "cloud": "aws", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-4", "geo": "us", "cloud": "aws", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-6", "geo": "us", "cloud": "aws", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-east-5", "geo": "us", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-9", "geo": "us", "cloud": "azure", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-10", "geo": "us", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-12", "geo": "us", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-west-11", "geo": "eu", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-west-4", "geo": "eu", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-5", "geo": "eu", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-1", "geo": "eu", "cloud": "aws", "env": "dev", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-8", "geo": "eu", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-13", "geo": "eu", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-west-3", "geo": "apac", "cloud": "azure", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-5", "geo": "apac", "cloud": "aws", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-2", "geo": "apac", "cloud": "azure", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-1", "geo": "apac", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-east-10", "geo": "apac", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-14", "geo": "apac", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-3", "geo": "apac", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-2", "geo": "apac", "cloud": "azure", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-4", "geo": "apac", "cloud": "azure", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-north-4", "geo": "ltam", "cloud": "aws", "env": "dev", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-south-10", "geo": "ltam", "cloud": "aws", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-center-3", "geo": "ltam", "cloud": "gcp", "env": "dev", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+
+      - {"region": "us-east-1", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-3", "geo": "us", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-6", "geo": "us", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-8", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-9", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-16", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-1", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-9", "geo": "us", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-13", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-15", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-1", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-2", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-4", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-9", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-1", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-2", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-9", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-2", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-7", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-east-1", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-13", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-5", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-15", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-16", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-6", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-8", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-7", "geo": "us", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-9", "geo": "us", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-2", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-5", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-9", "geo": "us", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-east-3", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-7", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-3", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-4", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-6", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-15", "geo": "eu", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-2", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-8", "geo": "eu", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-1", "geo": "eu", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-3", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-east-3", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-8", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-5", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-7", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-10", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-11", "geo": "eu", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-1", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-2", "geo": "eu", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-4", "geo": "eu", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-7", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-10", "geo": "eu", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-east-6", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-12", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-1", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-6", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-9", "geo": "apac", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-3", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-4", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-east-12", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-3", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-4", "geo": "apac", "cloud": "azure", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-8", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-7", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-12", "geo": "apac", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-1", "geo": "apac", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-2", "geo": "apac", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-3", "geo": "apac", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-east-2", "geo": "ltam", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-6", "geo": "ltam", "cloud": "aws", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-center-1", "geo": "ltam", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-east-1", "geo": "ltam", "cloud": "aws", "env": "staging", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-5", "geo": "ltam", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-7", "geo": "ltam", "cloud": "aws", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-center-1", "geo": "ltam", "cloud": "gcp", "env": "staging", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+
+      - {"region": "us-east-1", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-2", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-3", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-5", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-6", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-7", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-8", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-9", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-12", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-13", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-15", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-16", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-17", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-east-18", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-west-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-2", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-3", "geo": "us", "cloud": "aws", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-7", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-9", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-12", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-13", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-15", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-west-16", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-north-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-3", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-7", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-north-9", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-south-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-3", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-7", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-8", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-9", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-10", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-south-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-center-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-3", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-6", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-7", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-9", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-12", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-13", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "us-center-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "us-east-1", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-2", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-3", "geo": "us", "cloud": "azure", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-5", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-6", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-7", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-8", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-9", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-12", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-13", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-15", "geo": "us", "cloud": "aws", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-16", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-17", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-east-18", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "us-west-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-2", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-3", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-7", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-9", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-12", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-13", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-15", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-west-16", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "us-north-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-3", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-7", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-north-9", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "us-south-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-3", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-6", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-7", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-8", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-9", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-10", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-south-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "us-center-1", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-2", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-3", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-4", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-5", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-6", "geo": "us", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-7", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-8", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-9", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-10", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-11", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-12", "geo": "us", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-13", "geo": "us", "cloud": "aws", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "us-center-14", "geo": "us", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-east-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-8", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-east-9", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-west-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-2", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-4", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-5", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-8", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-10", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-11", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-12", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-13", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-14", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-west-15", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-north-1", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-3", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-5", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-8", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-north-10", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-south-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-2", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-4", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-6", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-south-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-center-1", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-8", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-10", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-11", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-12", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "eu-center-13", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "eu-east-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "true", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-8", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-east-9", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-west-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-2", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-4", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-5", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-8", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-10", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-11", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-12", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-13", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-14", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-west-15", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-north-1", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-3", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-5", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-8", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-north-10", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-south-1", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-2", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-4", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-6", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-south-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "eu-center-1", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-2", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-3", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-4", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-5", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-6", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-7", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-8", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-9", "geo": "eu", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-10", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-11", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-12", "geo": "eu", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "eu-center-13", "geo": "eu", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-east-1", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-2", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-6", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-10", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-11", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-12", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-13", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-east-14", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-west-1", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-2", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "true", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-3", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-6", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-west-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-north-1", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-2", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-3", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-4", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-5", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-6", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-north-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-south-1", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-2", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-4", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-6", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-10", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-11", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-south-12", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-center-1", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-2", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "apac-center-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "apac-east-1", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-2", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-6", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-10", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-11", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-12", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-13", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-east-14", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-west-1", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-2", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-3", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-6", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-west-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-north-1", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-2", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-3", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-4", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-5", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-6", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-north-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-south-1", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-2", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-4", "geo": "apac", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-6", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-7", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-8", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-9", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-10", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-11", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-south-12", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "apac-center-1", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-2", "geo": "apac", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-3", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-4", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "apac-center-5", "geo": "apac", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-east-1", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-5", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-6", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-7", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-east-8", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-west-1", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-west-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-west-3", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-west-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-west-5", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-west-6", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-north-1", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-north-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-north-3", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-north-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-south-1", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-4", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-5", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-6", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-7", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-8", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-9", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-south-10", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-center-1", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-center-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+      - {"region": "ltam-center-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "primary", "replicas": "10"}
+
+      - {"region": "ltam-east-1", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-5", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-6", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-7", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-east-8", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-west-1", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-west-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-west-3", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-west-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-west-5", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-west-6", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-north-1", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-north-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-north-3", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-north-4", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-south-1", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-4", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-5", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-6", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-7", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-8", "geo": "ltam", "cloud": "azure", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-9", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-south-10", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+      - {"region": "ltam-center-1", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-center-2", "geo": "ltam", "cloud": "aws", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+      - {"region": "ltam-center-3", "geo": "ltam", "cloud": "gcp", "env": "prod", "fail": "false", "tier": "secondary", "replicas": "5"}
+
+  template:
+    metadata: 
+      name: '${{resource.env}}-${{resource.region}}-${{resource.tier}}'
+      labels:
+        env: ${{resource.env}}
+        cloud: '${{resource.cloud}}'
+        tier: '${{resource.tier}}'
+        geo: '${{resource.geo}}'
+    spec:
+      params:
+        fail: ${{resource.fail}}
+        env: ${{resource.env}}
+        branch: env/prod-${{resource.region}}-${{resource.tier}}
+        replicas: '${{resource.replicas}}'
+        cluster:
+          region: '${{resource.region}}'
+          server: https://kubernetes.${{resource.region}}.${{resource.env}}.example.com
