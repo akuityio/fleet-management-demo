@@ -1,0 +1,114 @@
+---
+# Source: kargo-enterprise/templates/promotion-request-controller/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-promotion-request-controller
+  namespace: kargo-u4mqjepdv1rr4us5
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: promotion-request-controller
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kargo-enterprise
+      app.kubernetes.io/instance: kargo
+      app.kubernetes.io/component: promotion-request-controller
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: kargo-enterprise-0.1.0
+        app.kubernetes.io/name: kargo-enterprise
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/version: "v0.1.0"
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: promotion-request-controller
+      annotations:
+        configmap/checksum: 7674272b6f852354a5663c4c9df194bc5355e964405e18f7ce7176b78ada4bfd
+    spec:
+      serviceAccountName: kargo-promotion-request-controller
+      containers:
+        - name: promotion-request-controller
+          image: ghcr.io/jessesuen/kargo:fleet
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/kargo", "promotion-request-controller"]
+          env:
+            - name: GOMEMLIMIT
+              valueFrom:
+                resourceFieldRef:
+                  containerName: promotion-request-controller
+                  divisor: "1"
+                  resource: limits.memory
+            - name: GOMAXPROCS
+              valueFrom:
+                resourceFieldRef:
+                  containerName: promotion-request-controller
+                  divisor: "1"
+                  resource: limits.cpu
+          envFrom:
+            - configMapRef:
+                name: kargo-promotion-request-controller
+          resources:
+            {}
+          volumeMounts:
+            - mountPath: /etc/kargo/kubeconfigs
+              name: kubeconfigs
+              readOnly: true
+      volumes:
+        - name: kubeconfigs
+          projected:
+            sources:
+              - secret:
+                  name: k3s-kubeconfig
+                  items:
+                    - key: kubeconfig.yaml
+                      path: kubeconfig.yaml
+                      mode: 0644
+---
+# Source: kargo-enterprise/templates/promotion-request-controller/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-promotion-request-controller
+  namespace: kargo-u4mqjepdv1rr4us5
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: promotion-request-controller
+data:
+  LOG_LEVEL: "DEBUG"
+  LOG_FORMAT: "CONSOLE"
+  MAX_CONCURRENT_RECONCILES: "4"
+  # A PromotionRequest carries the shard label of the Stage that created it. An
+  # unlabeled request belongs to the default controller, so a sharded
+  # installation must name its shard here or those requests go unclaimed.
+  IS_DEFAULT_CONTROLLER: "true"
+  KUBECONFIG: /etc/kargo/kubeconfigs/kubeconfig.yaml
+---
+# Source: kargo-enterprise/templates/promotion-request-controller/service-account.yaml
+# The PromotionRequest controller's identity. Rendered in the cluster where the controller workload
+# runs (used as its pod `serviceAccountName`) and in the cluster hosting the kargo data plane
+# (subjected to the data-plane RBAC). In a single-cluster topology both are the same cluster.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-promotion-request-controller
+  namespace: kargo-u4mqjepdv1rr4us5
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: promotion-request-controller

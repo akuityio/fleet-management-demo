@@ -1,0 +1,64 @@
+---
+# Source: kargo-enterprise/templates/target-set-controller/cluster-roles.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kargo-target-set-controller
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: target-set-controller
+rules:
+  - apiGroups:
+      - ee.kargo.akuity.io
+    resources:
+      - targetsets
+      - targetsets/status
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - patch
+  - apiGroups:
+      - kargo.akuity.io
+    resources:
+      - targets
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+---
+# Source: kargo-enterprise/templates/target-set-controller/cluster-role-bindings.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kargo-target-set-controller-agent-demo-fleet
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: target-set-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kargo-target-set-controller
+subjects:
+  - kind: ServiceAccount
+    name: agent-demo-fleet
+    namespace: kargo

@@ -1,0 +1,118 @@
+---
+# Source: kargo-enterprise/templates/target-set-controller/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-target-set-controller
+  namespace: akuity-demo-fleet
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: target-set-controller
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kargo-enterprise
+      app.kubernetes.io/instance: kargo
+      app.kubernetes.io/component: target-set-controller
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: kargo-enterprise-0.1.0
+        app.kubernetes.io/name: kargo-enterprise
+        app.kubernetes.io/instance: kargo
+        app.kubernetes.io/version: "v0.1.0"
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: target-set-controller
+      annotations:
+        configmap/checksum: f897acc7f6f02fada69bfdde495dea23807c10a3cafe177324d6b5f7a336038e
+    spec:
+      serviceAccountName: kargo-target-set-controller
+      containers:
+        - name: target-set-controller
+          image: ghcr.io/jessesuen/kargo:fleet
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/kargo", "target-set-controller"]
+          env:
+            - name: GOMEMLIMIT
+              valueFrom:
+                resourceFieldRef:
+                  containerName: target-set-controller
+                  divisor: "1"
+                  resource: limits.memory
+            - name: GOMAXPROCS
+              valueFrom:
+                resourceFieldRef:
+                  containerName: target-set-controller
+                  divisor: "1"
+                  resource: limits.cpu
+          envFrom:
+            - configMapRef:
+                name: kargo-target-set-controller
+          resources:
+            {}
+          volumeMounts:
+            - mountPath: /etc/kargo/kubeconfigs
+              name: kubeconfigs
+              readOnly: true
+      volumes:
+        - name: kubeconfigs
+          projected:
+            sources:
+              - secret:
+                  name: kargo-controller-kubeconfig-demo-fleet
+                  items:
+                    - key: kubeconfig.yaml
+                      path: kubeconfig.yaml
+                      mode: 0644
+              - secret:
+                  name: kargo-akp-cd-kubeconfig-demo-fleet
+                  items:
+                    - key: kubeconfig.yaml
+                      path: argocd-kubeconfig.yaml
+                      mode: 0644
+---
+# Source: kargo-enterprise/templates/target-set-controller/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kargo-target-set-controller
+  namespace: akuity-demo-fleet
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: target-set-controller
+data:
+  LOG_LEVEL: "DEBUG"
+  LOG_FORMAT: "CONSOLE"
+  MAX_CONCURRENT_RECONCILES: "4"
+  ARGOCD_NAMESPACE: argocd
+  KUBECONFIG: /etc/kargo/kubeconfigs/kubeconfig.yaml
+  ARGOCD_KUBECONFIG: /etc/kargo/kubeconfigs/argocd-kubeconfig.yaml
+---
+# Source: kargo-enterprise/templates/target-set-controller/service-account.yaml
+# The TargetSet controller's identity. Rendered in the cluster where the controller workload runs
+# (used as its pod `serviceAccountName`) and in the cluster hosting the kargo data plane
+# (subjected to the data-plane RBAC). In a single-cluster topology both are the same cluster.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kargo-target-set-controller
+  namespace: akuity-demo-fleet
+  labels:
+    helm.sh/chart: kargo-enterprise-0.1.0
+    app.kubernetes.io/name: kargo-enterprise
+    app.kubernetes.io/instance: kargo
+    app.kubernetes.io/version: "v0.1.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: target-set-controller
